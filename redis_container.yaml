@@ -1,6 +1,5 @@
 ---
 - hosts: localhost
-  become: true
   vars:
     create_containers: 1
     default_container_name: redis
