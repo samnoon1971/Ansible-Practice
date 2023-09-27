@@ -1,0 +1,18 @@
+---
+
+- name: Install Kibana
+  hosts: localhost
+  tasks:
+    - name: Install Kibana using Docker 
+      docker_container:
+        name: kibana
+        image: docker.elastic.co/kibana/kibana:7.10.1
+        restart_policy: always
+        ports:
+          - "5601:5601"
+        volumes:
+          - /etc/kibana/kibana.yml:/usr/share/kibana/config/kibana.yml
+        env:
+          ELASTICSEARCH_HOSTS: http://localhost:9200
+          ELASTICSEARCH_USERNAME: elastic
+          ELASTICSEARCH_PASSWORD: samnoon12345
